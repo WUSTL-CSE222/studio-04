@@ -65,7 +65,7 @@ var light = {
       this.stateChange()
     },
     setAutoOffTime: function(time) {
-      this.autoOffTime = enabled
+      this.autoOffTime = time
       this.stateChange()
     },
     setStateChangeHandler: function(handler) {
