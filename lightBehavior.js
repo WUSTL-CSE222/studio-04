@@ -38,7 +38,7 @@ var light = {
       // callback(state);
 
       // Approach 2:
-      setTimeout(function () {callback(state)},  1000);
+      // setTimeout(function () {callback(state)},  1000);
     },
 
     // ****** Simple setter functions *******
@@ -75,15 +75,6 @@ var light = {
     stateChange: function() {
       // TODO: Whenever this is called it should pass the current state to the callback function after 1s
       // NOTE: Consider using the JSON format shown in getState()
-      var stateChangeHandler = this.stateChangeHandler;
-      if(stateChangeHandler) {
-        var state = { "r":this.r,
-                      "g":this.g,
-                      "b":this.b,
-                      "powered":this.powered,
-                      "autoOffEnabled":this.autoOffEnabled,
-                      "autoOffTime":this.autoOffTime};
-        setTimeout(function() { stateChangeHandler(state) }, 1);
       }
     }
 }
@@ -168,7 +159,7 @@ function stateUpdate(newState) {
 
   // Adjust state elements that may be changed on light / come from light
   autoOffSwitch.checked = newState.autoOffEnabled;
-  
+
   // Note "change" function
   autoOffTimeSlider.value = newState.autoOffTime;
   autoOffTimeLabel.innerText = autoOffTimeSlider.value + "s"
@@ -213,6 +204,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
   console.log("Getting Initial State")
   loadingPage(true)
   light.getState(stateUpdate)
-  light.setStateChangeHandler(stateUpdate)
   updateTargetColor()
 })
